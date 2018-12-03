@@ -1,0 +1,48 @@
+{
+  "name": "@flopflip/launchdarkly-adapter",
+  "version": "2.4.4",
+  "description": "A adapter around the LaunchDarkly client for flipflop",
+  "main": "dist/@flopflip-launchdarkly-adapter.cjs.js",
+  "module": "dist/@flopflip-launchdarkly-adapter.es.js",
+  "scripts": {
+    "prebuild": "rimraf dist/**",
+    "build": "cross-env npm run build:es && npm run build:cjs",
+    "build:watch": "cross-env npm run build:es -- -w",
+    "build:es": "cross-env NODE_ENV=development rollup -c ../../rollup.config.js -f es -i modules/index.js -o dist/@flopflip-launchdarkly-adapter.es.js",
+    "build:cjs": "cross-env NODE_ENV=development rollup -c ../../rollup.config.js -f cjs -i modules/index.js -o dist/@flopflip-launchdarkly-adapter.cjs.js"
+  },
+  "files": [
+    "readme.md",
+    "dist/**"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tdeekens/flopflip.git"
+  },
+  "author": "Tobias Deekens <nerd@tdeekens.name>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tdeekens/flopflip/issues"
+  },
+  "homepage": "https://github.com/tdeekens/flopflip#readme",
+  "devDependencies": {
+    "@flopflip/types": "^1.4.0",
+    "enzyme": "3.7.0",
+    "enzyme-to-json": "3.3.4"
+  },
+  "dependencies": {
+    "ldclient-js": "2.7.5",
+    "lodash.camelcase": "4.3.0",
+    "lodash.isequal": "4.5.0",
+    "tiny-warning": "1.0.0"
+  },
+  "keywords": [
+    "feature-flags",
+    "feature-toggles",
+    "LaunchDarkly",
+    "client"
+  ]
+}
